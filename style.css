@@ -110,8 +110,8 @@ body.light-mode nav ul li a {
 }
 
 .profile-pic {
-    width: 120px;
-    height: 120px;
+    width: 175px;
+    height: 175px;
     border-radius: 50%;
     border: 3px solid #ff00cc;
     box-shadow: 0 0 10px rgba(255, 0, 204, 0.7);
@@ -162,6 +162,12 @@ body.light-mode .introduction {
 
 body.light-mode .introduction h2 {
     color: #ff00cc;
+}
+
+#typed2{
+    color: aqua;
+    text-decoration: underline;
+    text-decoration-color: #ff66cc;
 }
 
 @media (max-width: 768px) {
