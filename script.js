@@ -74,27 +74,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
-document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".service-image");
-    const viewer = document.getElementById("image-viewer");
-    const fullImage = document.getElementById("full-image");
-    const closeButton = document.querySelector(".close-btn");
-
-    images.forEach(img => {
-        img.addEventListener("click", () => {
-            fullImage.src = img.src;
-            viewer.style.display = "flex";
-        });
-    });
-
-    closeButton.addEventListener("click", () => {
-        viewer.style.display = "none";
-    });
-
-    viewer.addEventListener("click", (e) => {
-        if (e.target !== fullImage && e.target !== closeButton) {
-            viewer.style.display = "none";
-        }
-    });
-});
