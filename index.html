@@ -41,6 +41,33 @@
         <p>
             My goal is to provide personalized financial services that secure your future.
         </p>
+        <button id="open-form-btn">Get in Touch</button>
+    </div>
+
+    <div id="popup-form" class="popup-form">
+        <div class="form-container">
+            <span id="close-form-btn" class="close-btn">&times;</span>
+            <h4>Contact Us</h4>
+            <form method="post" action="" name="contact-form">
+                <input type="text" name="your-name" placeholder="Your Name" required>
+                <input type="text" name="your-number" placeholder="Your Phone Number" required>
+                <input type="email" name="your-email" placeholder="Your Email" required>
+
+                <select name="your-service" required>
+                    <option value="" disabled selected>Select a Service</option>
+                    <option value="Health-Insurance">Health Insurance</option>
+                    <option value="Term-Insurance">Term Insurance</option>
+                    <option value="Vehicle-Insurance">Vehicle Insurance</option>
+                    <option value="ITR Filing">ITR Filing</option>
+                    <option value="SIP in Mutual Funds">SIP in Mutual Funds</option>
+                    <option value="Credit Cards">Credit Cards</option>
+                </select>
+
+                <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+
+                <input type="submit" value="Submit" id="submit">
+            </form>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>

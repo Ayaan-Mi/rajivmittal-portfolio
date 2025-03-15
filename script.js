@@ -9,8 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
         themeToggle.textContent = "🌙";
     }
 
-    body.style.transition = "background-image 0.5s ease-in-out, color 0.5s ease-in-out";
-
     themeToggle.addEventListener("click", function () {
         body.classList.toggle("light-mode");
 
@@ -22,41 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("theme", "dark");
         }
     });
-
-    document.addEventListener("visibilitychange", function () {
-        if (document.visibilityState === "visible") {
-            document.body.classList.add("prevent-flicker");
-            setTimeout(() => {
-                document.body.classList.remove("prevent-flicker");
-            }, 100);
-        }
-    });
-
-    const card = document.querySelector(".card");
-    if (card) {
-        VanillaTilt.init(card, {
-            max: 25,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.3
-        });
-    }
-
-    if (document.getElementById("typed")) {
-        new Typed("#typed", {
-            strings: [
-                "SIP IN MUTUAL FUNDS",
-                "HEALTH INSURANCE",
-                "TERM INSURANCE",
-                "VEHICLE INSURANCE",
-                "ITR FILING",
-                "CREDIT CARDS"
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            loop: true
-        });
-    }
 
     if (document.getElementById("typed2")) {
         new Typed("#typed2", {
@@ -73,4 +36,44 @@ document.addEventListener("DOMContentLoaded", function () {
             loop: true
         });
     }
+
+    const openFormBtn = document.getElementById("open-form-btn");
+    const popupForm = document.getElementById("popup-form");
+    const formContainer = document.querySelector(".form-container");
+    const form = document.forms["contact-form"];
+    const closeFormBtn = document.getElementById("close-form-btn");
+
+    openFormBtn.addEventListener("click", function () {
+        popupForm.style.display = "flex";
+    });
+
+    closeFormBtn.addEventListener("click", function () {
+        popupForm.style.display = "none";
+    });
+
+    window.addEventListener("click", function (e) {
+        if (e.target === popupForm) {
+            popupForm.style.display = "none";
+        }
+    });
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbz-e0WdaibvT7kcgZFG5IHnt0B_ZKAUQfaUeBfMvFbDEf17sRTks4QEUVmGo--Wd4MP/exec";
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+            .then((response) => {
+                formContainer.innerHTML = `
+                    <h2 style="color: #ff00cc;">Thank you for submitting!</h2>
+                    <p>Your form has been successfully submitted.</p>
+                `;
+
+                setTimeout(() => {
+                    popupForm.style.display = "none";
+                    location.reload(); 
+                }, 3000);
+            })
+            .catch((error) => console.error("Error!", error.message));
+    });
 });
